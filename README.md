@@ -1,16 +1,17 @@
 # SeekhoSakhi
 Spoken app for teaching women
 
-# 🗣️ Multilingual Spoken Educational App for Women  
+
+# 🗣️ Multilingual Spoken Educational Webapp for Women  
 
 ## 📌 Project Overview  
-This project is a **spoken, multilingual educational application** designed to help women learn about:  
+This project is a **spoken, multilingual educational web application** designed to help women learn about:  
 - **Women’s rights**  
 - **Maternity & childcare**  
 - **General knowledge tips**  
 - **Government schemes & health awareness**  
 
-The app provides **FAQs, educational videos, and daily knowledge tips** in multiple Indian languages. It is designed to be **accessible to low-literacy users** through **speech-based interaction**.  
+The webapp provides **FAQs, educational videos, and daily knowledge tips** in multiple Indian languages. It is designed to be **accessible to low-literacy users** through **speech-based interaction**.  
 
 ---
 
@@ -20,6 +21,7 @@ The app provides **FAQs, educational videos, and daily knowledge tips** in multi
 - **Speech-to-Text (STT):** Convert user queries in multiple languages into text.  
 - **Text-to-Speech (TTS):** Provide spoken answers in natural voices.  
 - **Language Detection:** Auto-detect the language of the user’s query.  
+- **Mic Button Navigation:** Users can interact with the app by speaking instead of typing.  
 
 ### ❓ FAQ Answering System  
 - Searchable FAQ database covering women’s rights, maternity, and childcare.  
@@ -30,7 +32,7 @@ The app provides **FAQs, educational videos, and daily knowledge tips** in multi
   → Both map to the same answer.  
 
 ### 📹 Educational Content  
-- Short videos, infographics, and guides on women’s health, childcare, and rights.  
+- Embedded videos, infographics, and guides on women’s health, childcare, and rights.  
 - Personalized recommendations based on user interest.  
 
 ### 📢 General Knowledge Tips  
@@ -42,7 +44,7 @@ The app provides **FAQs, educational videos, and daily knowledge tips** in multi
 
 ### ♿ Accessibility Features  
 - Full **voice navigation** (hands-free, low-literacy friendly).  
-- **Offline FAQ support** for areas with poor internet connectivity.  
+- **Offline FAQ support** via Progressive Web App (PWA).  
 - Simple UI with icons + audio labels.  
 
 ---
@@ -55,8 +57,8 @@ The app provides **FAQs, educational videos, and daily knowledge tips** in multi
 - Use **embeddings (sentence-transformers / fastText)** for FAQ retrieval.  
 
 ### 🔊 Speech Technologies  
-- **Speech-to-Text (ASR):** OpenAI Whisper, Vosk, or Google Speech API.  
-- **Text-to-Speech (TTS):** CoquiTTS, Festival, or AWS Polly.  
+- **Speech-to-Text (ASR):** Web Speech API, OpenAI Whisper, or Google Speech API.  
+- **Text-to-Speech (TTS):** Web Speech API (browser-based) or CoquiTTS.  
 - **Language Detection:** FastText or langdetect library.  
 
 ### 🎯 Recommendation System  
@@ -78,15 +80,18 @@ The app provides **FAQs, educational videos, and daily knowledge tips** in multi
 - Curated FAQs from surveys/interviews.  
 
 ### 🛠️ Tools & Frameworks  
+- **Frontend:** React.js / Vue.js  
+- **UI Libraries:** Material UI / Bootstrap  
+- **Backend:** Flask / FastAPI (Python) or Node.js  
+- **Database:** SQLite / MongoDB / PostgreSQL  
 - **NLP:** HuggingFace, IndicNLP, spaCy  
-- **Speech:** Whisper, Vosk, CoquiTTS  
-- **Backend:** Flask / FastAPI  
-- **Database:** SQLite / MongoDB  
-- **Frontend:** Android (Java/Kotlin) or React Native  
+- **Search:** FAISS / ElasticSearch  
+- **Speech APIs:** Web Speech API, Whisper, Vosk  
 
 ### ☁️ Infrastructure  
 - Phase 1: Use cloud APIs (Google/Azure/AWS) for quick prototyping.  
 - Phase 2: Move to **open-source offline models** for rural deployments.  
+- Deploy as **PWA** for offline access.  
 
 ---
 
@@ -95,28 +100,28 @@ The app provides **FAQs, educational videos, and daily knowledge tips** in multi
 ### ✅ Phase 1: Prototype (MVP)  
 - FAQ database (CSV/JSON).  
 - Speech-to-Text → FAQ retrieval → Text-to-Speech in **1–2 languages**.  
-- Basic Android app UI.  
+- Basic web UI with mic button.  
 
 ### 🔜 Phase 2: Expansion  
 - Add **multiple Indian languages**.  
-- Add video & tip recommendations.  
-- Daily knowledge updates.  
+- Add video content section.  
+- Daily tips (banner + spoken).  
 
-### 🎯 Phase 3: Smart Features  
+### 🎯 Phase 3: Smart Webapp  
 - Personalized recommendations.  
 - Knowledge graph for complex queries.  
-- Offline mode support.  
+- Offline PWA mode support.  
 
 ---
 
 ## 📊 Example Workflow  
 
+```mermaid
 flowchart TD
-    A[User Speaks] --> B[Speech-to-Text]
+    A[User Clicks Mic & Speaks] --> B[Speech-to-Text]
     B --> C[Language Detection]
-    C --> D[NLP + FAQ Retrieval]
-    D --> E[Answer Found]
-    D --> F[Recommend Video/Tip]
-    E --> G[Text-to-Speech]
-    F --> G[Text-to-Speech]
-    G --> H[User Hears Response]
+    C --> D[NLP FAQ Search / Recommendations]
+    D --> E[Answer / Video Selected]
+    E --> F[Text-to-Speech]
+    E --> G[Show Text + Video on Web UI]
+    F --> H[User Hears Spoken Answer]
