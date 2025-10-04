@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seekho Sakhi</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <div class="carousel">
+                <a href="https://shebox.wcd.gov.in/" target="_blank">
+                    <img src="{{ url_for('static', filename='images/workplace.png') }}" class="active">
+                </a>
+                <a href="https://nhm.gov.in/index1.php?lang=1&level=3&sublinkid=1021&lid=391" target="_blank">
+                    <img src="{{ url_for('static', filename='images/rural.png') }}">
+                </a>
+                <a href="https://bpac.in/top-10-safety-measures-which-must-be-implemented-for-women/" target="_blank">
+                    <img src="{{ url_for('static', filename='images/safety.png') }}">
+                </a>
+                <a href="https://delhipolice.gov.in/doc/home/backup/woman%20help%20line.pdf" target="_blank">
+                    <img src="{{ url_for('static', filename='images/kitchen.png') }}">
+                </a>
+                <a href="https://indianhelpline.com/child-helpline" target="_blank">
+                    <img src="{{ url_for('static', filename='images/classroom.png') }}">
+                </a>
+            </div>
+        </div>
+
+        <div class="right-panel">
+            <h2>Seekho Sakhi : Protect & Empower</h2>
+            <div class="chatbox" id="chatbox"></div>
+            <div class="input-group">
+                <input type="text" id="userInput" placeholder="Type or speak your query">
+                <button id="micBtn">🎤</button>
+                <button id="sendBtn">Send</button>
+            </div>
+        </div>
+    </div>
+    <footer>
+    <p>Important Helplines: Police - 100 | Women Helpline - 181 | Child Helpline - 1098</p>
+</footer>
+
+
+    <!-- JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
