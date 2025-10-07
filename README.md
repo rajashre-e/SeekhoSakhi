@@ -1,127 +1,127 @@
-# SeekhoSakhi  https://seekhosakhi.onrender.com
-Spoken app for teaching women
+# SeekhoSakhi  
+A Voice-Enabled Chatbot for Women’s Safety and Empowerment  
 
+Live Demo: https://seekosakhi.onrender.com  
 
-# 🗣️ Multilingual Spoken Educational Webapp for Women  
+## Overview  
+SeekhoSakhi is a web-based chatbot designed to support women by providing crime predictions, safety information, and access to emergency resources. The application uses voice interaction to make it accessible to users with low literacy or limited reading ability.  
 
-## 📌 Project Overview  
-This project is a **spoken, multilingual educational web application** designed to help women learn about:  
-- **Women’s rights**  
-- **Maternity & childcare**  
-- **General knowledge tips**  
-- **Government schemes & health awareness**  
+The system predicts crime levels in Indian states using historical data and answers general questions about women’s rights, health, and safety using an external AI service. It also displays key helplines and educational content through a simple interface.  
 
-The webapp provides **FAQs, educational videos, and daily knowledge tips** in multiple Indian languages. It is designed to be **accessible to low-literacy users** through **speech-based interaction**.  
+## Features  
 
----
+### Crime Prediction  
+- Predicts total crimes against women for a given state and year.  
+- Uses a trained machine learning model based on NCRB data (2010–2018).  
+- Two models implemented: Random Forest Regressor and Linear Regression.  
+- Returns prediction result along with safety tips and helpline numbers.  
 
-## 🚀 Key Functionalities  
+### Conversational AI  
+- Handles general queries about women’s rights, legal protections, health, and government schemes.  
+- Powered by OpenRouter API for dynamic, context-aware responses.  
 
-### 🎙️ Multilingual Speech Interaction  
-- **Speech-to-Text (STT):** Convert user queries in multiple languages into text.  
-- **Text-to-Speech (TTS):** Provide spoken answers in natural voices.  
-- **Language Detection:** Auto-detect the language of the user’s query.  
-- **Mic Button Navigation:** Users can interact with the app by speaking instead of typing.  
+### Voice Interaction  
+- Users can speak their queries using the microphone button.  
+- Speech-to-text converts voice input to text.  
+- Bot responses are read aloud using text-to-speech (Web Speech API).  
+- Designed for ease of use without requiring typing or reading.  
 
-### ❓ FAQ Answering System  
-- Searchable FAQ database covering women’s rights, maternity, and childcare.  
-- **Semantic search** → understands meaning, not just exact keywords.  
-- Example:  
-  - “How long is maternity leave?”  
-  - “Duration of leave after delivery?”  
-  → Both map to the same answer.  
+### Emergency Helplines  
+- Key helpline numbers are always visible in the footer:  
+  - Police: 100  
+  - Women Helpline: 181  
+  - Child Helpline: 1098  
 
-### 📹 Educational Content  
-- Embedded videos, infographics, and guides on women’s health, childcare, and rights.  
-- Personalized recommendations based on user interest.  
+### Educational Carousel  
+- Rotating image carousel on the left panel.  
+- Images link to resources on:  
+  - Women’s safety at workplace  
+  - Rural health and safety  
+  - Safety measures for women  
+  - Women and child helplines  
 
-### 📢 General Knowledge Tips  
-- Daily or weekly **spoken tips**:  
-  - Legal rights  
-  - Health & hygiene  
-  - Financial literacy  
-  - Childcare practices  
+## Dataset and Model  
 
-### ♿ Accessibility Features  
-- Full **voice navigation** (hands-free, low-literacy friendly).  
-- **Offline FAQ support** via Progressive Web App (PWA).  
-- Simple UI with icons + audio labels.  
+- Data source: National Crime Records Bureau (NCRB), 2010–2018.  
+- Features include: State/UT, District, Year, Rape, Dowry Deaths, Domestic Violence, Assault, Kidnapping, Cruelty by Husband, and more.  
+- Preprocessing steps:  
+  - Missing values filled with 0  
+  - Duplicates removed  
+  - Categorical variables encoded using LabelEncoder  
+- Cleaned dataset saved as: `data/womencrimes_cleaned.csv`  
+- Aggregated averages for prediction: `data/year_state_crime_averages.csv`  
+- Trained model saved as: `models/womencrimes_model.pkl`  
+- Training script: `train_womencrimes.py`  
 
----
+## Technology Stack  
 
-## ⚙️ Data Science & AI Requirements  
+- Frontend: HTML, CSS, JavaScript (ES6+)  
+- Backend: Flask (Python)  
+- Machine Learning: scikit-learn, pandas, joblib  
+- AI Integration: OpenRouter API  
+- Speech: Web Speech API (SpeechRecognition and speechSynthesis)  
+- Data Storage: CSV files, Pickle (.pkl) for model serialization  
 
-### 🧠 Natural Language Processing (NLP)  
-- **Multilingual NLP models** (IndicNLP, HuggingFace Transformers).  
-- Handle **transliteration & spelling variations**.  
-- Use **embeddings (sentence-transformers / fastText)** for FAQ retrieval.  
+## Project Structure  
+SeekhoSakhi/
+│
+├── app.py
+├── templates/
+│ └── index.html
+├── static/
+│ ├── css/
+│ │ └── style.css
+│ ├── js/
+│ │ └── main.js
+│ └── images/
+├── models/
+│ ├── womencrimes_model.pkl
+│ └── state_encoder.pkl
+├── data/
+│ ├── womencrimes_cleaned.csv
+│ └── year_state_crime_averages.csv
+├── services/
+│ ├── predict_crimes.py
+│ ├── openrouter_api.py
+│ └── faq_service.py
+└── train_womencrimes.py
 
-### 🔊 Speech Technologies  
-- **Speech-to-Text (ASR):** Web Speech API, OpenAI Whisper, or Google Speech API.  
-- **Text-to-Speech (TTS):** Web Speech API (browser-based) or CoquiTTS.  
-- **Language Detection:** FastText or langdetect library.  
+## How to Run Locally  
 
-### 🎯 Recommendation System  
-- Simple **content-based recommendation** (keywords & embeddings).  
-- Later: **personalized suggestions** based on usage patterns.  
+1. Clone the repository:  
+git clone https://github.com/rajashre-e/SeekhoSakhi.git
+cd SeekhoSakhi
 
-### 🔗 (Optional) Knowledge Graph  
-- Connect related concepts like *Maternity → Leave Policy → Schemes → Hospitals*.  
-- Helps answer related or follow-up questions.  
+2. Install required packages:  
+pip install flask pandas scikit-learn joblib python-dotenv requests
 
----
+3. Set up environment variable:  
+Create a `.env` file and add your OpenRouter API key:  
+OPENROUTER_API_KEY=your_api_key_here
 
-## 📋 Technical Requirements  
+4. Start the server:  
+python app.py
 
-### 📂 Data Sources  
-- Government portals (women’s rights, maternity leave policies, child schemes).  
-- WHO / UNICEF data on women & child health.  
-- NGO resources.  
-- Curated FAQs from surveys/interviews.  
+5. Open in browser: http://localhost:5000  
 
-### 🛠️ Tools & Frameworks  
-- **Frontend:** React.js / Vue.js  
-- **UI Libraries:** Material UI / Bootstrap  
-- **Backend:** Flask / FastAPI (Python) or Node.js  
-- **Database:** SQLite / MongoDB / PostgreSQL  
-- **NLP:** HuggingFace, IndicNLP, spaCy  
-- **Search:** FAISS / ElasticSearch  
-- **Speech APIs:** Web Speech API, Whisper, Vosk  
+## Deployment  
 
-### ☁️ Infrastructure  
-- Phase 1: Use cloud APIs (Google/Azure/AWS) for quick prototyping.  
-- Phase 2: Move to **open-source offline models** for rural deployments.  
-- Deploy as **PWA** for offline access.  
+The application is deployed on Render:  
+https://seekosakhi.onrender.com  
 
----
+## Security and Accessibility  
 
-## 🏗️ Roadmap  
+- No user data is stored.  
+- Input validation is applied on all endpoints.  
+- Voice-based interaction supports users with low literacy.  
+- Interface is responsive and works on both mobile and desktop.  
 
-### ✅ Phase 1: Prototype (MVP)  
-- FAQ database (CSV/JSON).  
-- Speech-to-Text → FAQ retrieval → Text-to-Speech in **1–2 languages**.  
-- Basic web UI with mic button.  
+## Impact  
 
-### 🔜 Phase 2: Expansion  
-- Add **multiple Indian languages**.  
-- Add video content section.  
-- Daily tips (banner + spoken).  
+SeekhoSakhi helps women access critical safety information quickly. By combining data-driven crime prediction with conversational AI and voice support, it serves as a practical tool for awareness and emergency guidance. It can be used by individuals, families, and community workers to promote women’s safety and empowerment.  
 
-### 🎯 Phase 3: Smart Webapp  
-- Personalized recommendations.  
-- Knowledge graph for complex queries.  
-- Offline PWA mode support.  
+## Credits  
 
----
-
-## 📊 Example Workflow  
-
-```mermaid
-flowchart TD
-    A[User Clicks Mic & Speaks] --> B[Speech-to-Text]
-    B --> C[Language Detection]
-    C --> D[NLP FAQ Search / Recommendations]
-    D --> E[Answer / Video Selected]
-    E --> F[Text-to-Speech]
-    E --> G[Show Text + Video on Web UI]
-    F --> H[User Hears Spoken Answer]
+- Crime Data: National Crime Records Bureau (NCRB)  
+- AI Backend: OpenRouter API  
+ 
