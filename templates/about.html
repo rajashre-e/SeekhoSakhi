@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - Seekho Sakhi</title>
+
+    <!-- Montserrat Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="{{ url_for('static', filename='favicon.png') }}"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <div class="navbar">
+      <div class="navbar-left">
+        <a
+          href="{{ url_for('home') }}"
+          style="color: #fff; text-decoration: none"
+          >Seekho Sakhi</a
+        >
+      </div>
+      <div class="navbar-right">
+        <a href="{{ url_for('about') }}">About Us</a>
+      </div>
+    </div>
+
+    <!-- About Us Container -->
+    <div
+      class="about-container"
+      style="
+        width: 90%;
+        max-width: 1200px;
+        margin: 140px auto 50px auto;
+        padding: 30px;
+        line-height: 1.6;
+        border-radius: 20px;
+        background: rgba(26, 26, 26, 0.9);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      "
+    >
+      <h2>About Seekho Sakhi</h2>
+      <p>
+        Seekho Sakhi is an innovative hybrid web application combining a
+        prediction model, chatbot, text-to-speech (TTS), and speech-to-text
+        (STT) features. Designed with the goal of keeping women safe, it
+        empowers users by providing timely awareness of crimes happening around
+        them.
+      </p>
+      <p>
+        Our platform predicts potential crime trends based on city-wise
+        statistics and reflects them in an easy-to-understand format. Through
+        the chatbot, users can interact naturally, receive safety tips, and
+        access essential helpline numbers.
+      </p>
+      <p>
+        By leveraging real-time insights, predictive analytics, and interactive
+        communication, Seekho Sakhi ensures that women stay informed, vigilant,
+        and prepared—turning data into actionable safety knowledge.
+      </p>
+      <p>
+        <strong>Key Features:</strong><br />
+        - Crime prediction based on city-level data<br />
+        - Interactive chatbot for queries and guidance<br />
+        - Voice-enabled TTS and STT for accessibility<br />
+        - Quick access to emergency helplines
+      </p>
+      <p>
+        <strong>Important Helplines:</strong> Police - 100 | Women Helpline -
+        181 | Child Helpline - 1098
+      </p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2025 Seekho Sakhi. All Rights Reserved.</p>
+    </footer>
+  </body>
+</html>

@@ -1,35 +1,47 @@
-/* Reset default margins and paddings */
+/* -------------------- Reset -------------------- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif; /* interactive font */
+    font-family: "Montserrat", sans-serif;
 }
 
+/* -------------------- Montserrat font classes -------------------- */
+.montserrat-thin { font-weight: 100; font-style: normal; }
+.montserrat-extra-light { font-weight: 200; font-style: normal; }
+.montserrat-light { font-weight: 300; font-style: normal; }
+.montserrat-regular { font-weight: 400; font-style: normal; }
+.montserrat-medium { font-weight: 500; font-style: normal; }
+.montserrat-semibold { font-weight: 600; font-style: normal; }
+.montserrat-bold { font-weight: 700; font-style: normal; }
+.montserrat-extra-bold { font-weight: 800; font-style: normal; }
+.montserrat-black { font-weight: 900; font-style: normal; }
+
+/* -------------------- Body -------------------- */
 body {
-    background: linear-gradient(135deg, #ff4d6d, #2b2b2b); /* blended red + dark gray */
+    background: linear-gradient(135deg, #ff4d6d, #2b2b2b);
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     color: #fff;
 }
 
-/* Main container */
+/* -------------------- Main container -------------------- */
 .container {
     display: flex;
-    height: 100vh;
-    overflow: hidden;
-    border-radius: 20px;
+    flex: 1;
     margin: 20px;
+    border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    overflow: hidden;
 }
 
-/* Left info panel (images carousel) */
+/* -------------------- Left panel -------------------- */
 .left-panel {
-    flex: 1;
-    background: #1a1a1a; /* dark gray instead of black */
+    flex: 0 0 45%;
+    min-width: 300px;
+    background: #1a1a1a;
     padding: 10px;
-    overflow: hidden;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
     position: relative;
 }
 
@@ -49,66 +61,94 @@ body {
     opacity: 0;
     transition: opacity 1s ease-in-out;
     border-radius: 15px;
+    pointer-events: none;
 }
 
 .left-panel .carousel img.active {
     opacity: 1;
+    pointer-events: auto;
 }
 
-/* Right chatbot panel */
+/* -------------------- Right panel -------------------- */
 .right-panel {
     flex: 1;
-    background: linear-gradient(135deg, #ff4d6d, #550000); /* red + dark maroon */
-    color: #fff;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     padding: 25px;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
+    background: linear-gradient(135deg, #ff4d6d, #550000);
 }
 
 .right-panel h2 {
     margin-bottom: 15px;
+    font-size: 28px;
+    text-align: center;
 }
 
-/* Chatbox messages */
+/* Chatbox */
 .chatbox {
-    flex: 1;
-    background: rgba(26,26,26,0.9); /* dark gray */
-    color: #fff;
-    padding: 20px;
+    height: 400px; /* Fixed height, adjust as needed */
+    background: rgba(26,26,26,0.9);
     border-radius: 20px;
-    overflow-y: auto;
-    margin-bottom: 20px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto; /* Enables vertical scrolling */
     box-shadow: inset 0 0 10px rgba(255,77,109,0.2);
+    font-family: "Montserrat", sans-serif;
 }
 
-.chatbox p {
-    margin: 10px 0;
-    padding: 10px 15px;
-    border-radius: 20px;
+
+/* -------------------- Message bubbles -------------------- */
+.message-bubble {
     max-width: 80%;
+    padding: 12px 18px;
+    border-radius: 20px;
     word-wrap: break-word;
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    font-family: "Montserrat", sans-serif;
 }
 
 .user-msg {
-    background: #ff6b85; /* soft pink-red */
+    align-self: flex-end;
+    background: #ff6b85;
     color: #000;
-    margin-left: auto;
     text-align: right;
+    border-bottom-right-radius: 0;
 }
 
 .bot-msg {
-    background: #660000; /* dark red */
+    align-self: flex-start;
+    background: #660000;
     color: #fff;
     text-align: left;
+    border-bottom-left-radius: 0;
 }
 
-/* Input group styling */
+.speaker-btn {
+    margin-top: 6px;
+    align-self: flex-end;
+    font-size: 14px;
+    padding: 2px 6px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #ffeb3b;
+}
+
+.speaker-btn:hover {
+    background: #fdd835;
+}
+
+/* -------------------- Input group -------------------- */
 .input-group {
     display: flex;
     gap: 10px;
+    margin-top: 15px; /* spacing between chatbox and input */
 }
 
 .input-group input {
@@ -117,69 +157,126 @@ body {
     border-radius: 25px;
     border: none;
     font-size: 16px;
-    outline: none;
-    background: #330000;
-    color: #fff;
 }
 
 .input-group button {
     padding: 12px 20px;
     border: none;
     border-radius: 25px;
-    background: #ff4d6d; /* soft red */
+    background: #ff4d6d;
     color: #fff;
     font-size: 18px;
     cursor: pointer;
-    transition: all 0.3s ease;
 }
 
 .input-group button:hover {
     background: #cc3a55;
 }
 
-/* Scrollbar for chatbox and left panel */
-.chatbox::-webkit-scrollbar, .left-panel::-webkit-scrollbar {
+/* -------------------- Scrollbars -------------------- */
+.chatbox::-webkit-scrollbar {
     width: 8px;
 }
 
-.chatbox::-webkit-scrollbar-thumb, .left-panel::-webkit-scrollbar-thumb {
+.chatbox::-webkit-scrollbar-thumb {
     background: #ff4d6d;
     border-radius: 10px;
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-    .container {
-        flex-direction: column;
-        height: auto;
-    }
-
-    .left-panel, .right-panel {
-        border-radius: 20px;
-        flex: unset;
-        height: 50vh;
-        margin: 10px;
-    }
-}
-
-/* Make only the visible image's link clickable */
-.left-panel .carousel a {
-    pointer-events: none; /* all links disabled by default */
-}
-
-.left-panel .carousel a img.active {
-    pointer-events: auto; /* only the active image is clickable */
-}
-
-/* Footer styling */
+/* -------------------- Footer -------------------- */
 footer {
-    background: linear-gradient(135deg, #ff4d6d, #2b2b2b); /* matches body gradient for smooth blend */
-    color: #000; /* black text for readability */
     text-align: center;
-    padding: 15px 20px;
-    font-family: 'Montserrat', sans-serif;
-    border-radius: 0 0 20px 20px; /* rounded only bottom corners */
+    padding: 15px;
+    font-family: "Montserrat", sans-serif;
+    border-radius: 0 0 20px 20px;
     margin-top: 10px;
-    box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+    background: linear-gradient(135deg, #ff4d6d, #2b2b2b);
+    color: #000;
+}
+
+/* -------------------- Responsive -------------------- */
+@media (max-width: 900px) {
+    .container { flex-direction: column; }
+    .left-panel, .right-panel { height: 50vh; margin: 10px; }
+}
+
+
+/* Navbar */
+.navbar {
+    position: fixed;           /* Fixes the navbar on scroll */
+    top: 20px;                 /* Distance from top of the page */
+    left: 50%;                 /* Center horizontally */
+    transform: translateX(-50%); /* Center perfectly */
+    width: 90%;                /* Slightly smaller than full width */
+    max-width: 1200px;         /* Optional max width */
+    background: linear-gradient(135deg, #ff4d6d, #550000);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    border-radius: 25px;       /* Fully curved corners */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    font-family: "Montserrat", sans-serif;
+    z-index: 1000;             /* Ensures it stays on top */
+}
+
+.navbar-left {
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.navbar-right a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.navbar-right a:hover {
+    color: #ffeb3b;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+        width: 95%;
+    }
+}
+
+
+/* Add spacing below the fixed navbar */
+.container {
+    margin-top: 100px; /* Adjust this based on navbar height + desired space */
+}
+
+
+/* More spacing between navbar and About Us container */
+.about-container {
+    max-width: 600px;
+    margin: 80px auto 30px auto; /* Increased top margin from 30px to 80px */
+    padding: 25px;
+    background: rgba(26,26,26,0.9);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    color: #fff;
+    text-align: justify; /* Spread text nicely */
+    line-height: 1.8;   /* Increase spacing between lines for readability */
+    font-family: "Montserrat", sans-serif;
+}
+
+
+/* Remove default link styling */
+.about-container a, .nav-right a {
+    color: inherit; /* inherits white color */
+    text-decoration: none;
+}
+
+.about-container a:hover, .nav-right a:hover {
+    color: #ffeb3b; /* optional hover effect */
 }
 
