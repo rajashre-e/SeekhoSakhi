@@ -62,9 +62,12 @@ The system predicts crime levels in Indian states using historical data and answ
 - Speech: Web Speech API (SpeechRecognition and speechSynthesis)  
 - Data Storage: CSV files, Pickle (.pkl) for model serialization  
 
-## Project Structure  
+## Project Structure
+
+The application is organized as follows:
+
 SeekhoSakhi/
-├── app.py
+├── app.py 
 ├── templates/
 │   └── index.html
 ├── static/
@@ -84,7 +87,7 @@ SeekhoSakhi/
 │   ├── openrouter_api.py
 │   └── faq_service.py
 └── train_womencrimes.py
-
+undefined
 
 ## How to Run Locally  
 
