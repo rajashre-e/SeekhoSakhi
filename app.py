@@ -6,12 +6,15 @@ import os
 def create_app():
     app = Flask(__name__)
 
+    # Register blueprint
     app.register_blueprint(prediction_routes.bp)
 
+    # Home route
     @app.route("/")
     def home():
         return render_template("index.html")
 
+    # Text-to-Speech route
     @app.route("/tts", methods=["POST"])
     def tts():
         data = request.json
@@ -26,12 +29,15 @@ def create_app():
 
         return send_file(audio_path)
     
+    # About route
     @app.route("/about")
     def about():
         return render_template("about.html")
 
     return app
 
+# ✅ Create a global app instance for Gunicorn
+app = create_app()
+
 if __name__ == "__main__":
-    app = create_app()
     app.run(debug=True)
