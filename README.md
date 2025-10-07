@@ -64,27 +64,27 @@ The system predicts crime levels in Indian states using historical data and answ
 
 ## Project Structure  
 SeekhoSakhi/
-│
 ├── app.py
 ├── templates/
-│ └── index.html
+│   └── index.html
 ├── static/
-│ ├── css/
-│ │ └── style.css
-│ ├── js/
-│ │ └── main.js
-│ └── images/
+│   ├── css/
+│   │   └── style.css
+│   ├── js/
+│   │   └── main.js
+│   └── images/
 ├── models/
-│ ├── womencrimes_model.pkl
-│ └── state_encoder.pkl
+│   ├── womencrimes_model.pkl
+│   └── state_encoder.pkl
 ├── data/
-│ ├── womencrimes_cleaned.csv
-│ └── year_state_crime_averages.csv
+│   ├── womencrimes_cleaned.csv
+│   └── year_state_crime_averages.csv
 ├── services/
-│ ├── predict_crimes.py
-│ ├── openrouter_api.py
-│ └── faq_service.py
+│   ├── predict_crimes.py
+│   ├── openrouter_api.py
+│   └── faq_service.py
 └── train_womencrimes.py
+
 
 ## How to Run Locally  
 
