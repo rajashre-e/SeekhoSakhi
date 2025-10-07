@@ -1,9 +1,7 @@
-*.csv
 *.pyc
 .env
 services/__pycache__/
 __pycache__/
-data/
 venv/
 instance/
 test.py
@@ -11,5 +9,8 @@ create_db.py
 faq_service.py
 __init__.py
 faq_routes.py
+state_crime_averages.csv 
+womencrimes_cleaned.csv
+womencrimes.csv 
 
 
