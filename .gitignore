@@ -12,5 +12,11 @@ faq_routes.py
 state_crime_averages.csv 
 womencrimes_cleaned.csv
 womencrimes.csv 
+women_empowerment_model
+train.jsonl
+test.jsonl
+questions.jsonl
+clean_questions.jsonl
+
 
 
